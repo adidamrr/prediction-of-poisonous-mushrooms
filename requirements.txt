@@ -1,0 +1,9 @@
+catboost
+fastapi
+httpx
+pandas
+psycopg[binary]
+python-dotenv
+sqlalchemy
+streamlit
+uvicorn

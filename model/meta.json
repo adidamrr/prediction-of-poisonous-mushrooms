@@ -1,0 +1,22 @@
+{
+  "threshold": 0.7435897435897436,
+  "num_cols": [
+    "cap-diameter",
+    "stem-height",
+    "stem-width"
+  ],
+  "cat_cols": [
+    "cap-shape",
+    "cap-color",
+    "does-bruise-or-bleed",
+    "gill-color",
+    "stem-color",
+    "ring-type",
+    "habitat",
+    "season",
+    "has-ring"
+  ],
+  "nan_token": "__nan__",
+  "positive_label": "p",
+  "negative_label": "e"
+}

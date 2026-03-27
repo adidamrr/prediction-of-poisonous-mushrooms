@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:16
+    container_name: mushroom-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mushroom_feedback
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: mushroom-backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/mushroom_feedback
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: mushroom-frontend
+    environment:
+      SERVICE_URL: http://backend:8000
+    depends_on:
+      - backend
+    ports:
+      - "8501:8501"
+
+volumes:
+  postgres_data:
