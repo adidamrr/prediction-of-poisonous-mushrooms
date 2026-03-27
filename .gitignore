@@ -3,3 +3,8 @@
 __pycache__/
 data/
 *.pyc
+.venv/
+venv/
+.idea/
+.vscode/
+.ipynb_checkpoints

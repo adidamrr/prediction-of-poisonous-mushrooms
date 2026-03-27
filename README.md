@@ -34,6 +34,13 @@ Pet project по мотивам Kaggle-конкурса [Binary Prediction of Po
 - [clear_feedback.py](/Users/grigory/Code/pet-projects/3/clear_feedback.py) — очистка feedback-таблиц
 - [docker-compose.yml](/Users/grigory/Code/pet-projects/3/docker-compose.yml) — запуск сервисов в Docker
 
+## Данные
+Папка `data/` не включена в репозиторий из-за размера файлов.
+
+Для запуска [train.py](/Users/grigory/Code/pet-projects/3/train.py) нужно отдельно скачать данные конкурса с Kaggle: [playground-series-s4e8/data](https://www.kaggle.com/competitions/playground-series-s4e8/data)
+
+После скачивания файлы нужно положить в папку `data/`.
+
 ## Что делает сервис
 Пользователь заполняет признаки гриба в UI.  
 Frontend отправляет их в backend.  
@@ -78,7 +85,9 @@ docker compose down
 ```
 
 ## Локальный запуск без Docker
-Если хочется запускать вручную, нужен `.env` в корне проекта:
+Если хочется запускать вручную, нужен `.env` в корне проекта.
+
+Файл `.env` добавлен в `.gitignore`, поэтому его нужно создать вручную.
 
 ```env
 DATABASE_URL=postgresql+psycopg://postgres:YOUR_PASSWORD@localhost:5432/mushroom_feedback
@@ -91,7 +100,7 @@ uv run uvicorn app:app --reload
 uv run streamlit run streamlit_app.py
 ```
 
-Но основной рекомендованный режим для проекта — через Docker.
+Для запуска через Docker `.env` не нужен: настройки базы уже заданы в `docker-compose.yml`.
 
 ## Дообучение модели
 После накопления feedback можно дообучить текущую модель:
@@ -140,5 +149,3 @@ docker compose up --build
 Таблица `prediction_feedback`:
 - ссылка на prediction;
 - отзыв пользователя `correct` / `incorrect`.
-
-
